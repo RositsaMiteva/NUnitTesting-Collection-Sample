@@ -50,8 +50,21 @@ namespace Collection.UnitTests
             coll.AddRange(5 + 5);
             //Assert
             Assert.That(coll.ToString(), Is.EqualTo("[10]"));
+        }
+         [Test]
+        public void Test_Collection_GetByIndex() 
+        {
+            // Arrange
+            var names = new Collection<string>("Peter", "Maria");
+            // Act
+            var item0 = names[0];
+            var item1 = names[1];
+            // Assert
+            Assert.That(item0, Is.EqualTo("Peter"));
+            Assert.That(item1, Is.EqualTo("Maria"));
 
         }
+
 
 
 
