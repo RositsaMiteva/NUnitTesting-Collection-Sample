@@ -117,7 +117,61 @@ namespace Collection.UnitTests
             Assert.That(nums.Capacity >= nums.Count);
 
         }
-        
+        [Test]
+        public void Test_Collection_Clear()
+        {
+            var collection = new Collection<int>(15, 20);
+            collection.Clear();
+            Assert.AreEqual(collection.Count, 0);
+            Assert.That(collection.Count, Is.EqualTo(0));
+        }
+        [Test]
+        public void Test_Collection_InsertAtStart()
+        {
+            var names = new Collection<string>("Petq, Ivan, Gosho");
+            names.InsertAt(0,"Sonq");
+            Assert.AreEqual(names.ToString(), "[Sonq, Petq, Ivan, Gosho]");
+            Assert.That("[Sonq, Petq, Ivan, Gosho]", Is.EqualTo(names.ToString()));
+
+        }
+
+        [Test]
+        public void Test_Collection_InsertAtMiddle()
+        {
+            var collection = new Collection<int>(1, 2, 3, 4);
+            collection.InsertAt(1, 200);
+            Assert.AreEqual(collection.ToString(), "[1, 200, 2, 3, 4]");
+            Assert.That("[1, 200, 2, 3, 4]", Is.EqualTo(collection.ToString()));
+        }
+
+        [Test]
+        public void Test_Collection_InsertAtEnd()
+        {
+            var collection = new Collection<int>(15, 16, 17, 18);
+            collection.InsertAt(3, 400);
+            Assert.AreEqual(collection.ToString(), "[15, 16, 17, 400, 18]");
+            Assert.That("[15, 16, 17, 400, 18]", Is.EqualTo(collection.ToString()));
+        }
+        [Test]
+        public void Test_Collection_ExchangeFirstLast()
+        {
+            var collection = new Collection<int>(200, 300, 400, 500);
+            collection.Exchange(0, 3);
+
+            Assert.That(collection[0] == 500);
+            Assert.That(collection[3] == 200);
+            Assert.That("[500, 300, 400, 200]", Is.EqualTo(collection.ToString()));
+        }
+        [Test]
+        public void Test_Collection_ExchangeMiddle()
+        {
+            var collection = new Collection<int>(10, 20, 30, 40);
+            collection.Exchange(1, 2);
+
+            Assert.That(collection[1] == 30);
+            Assert.That(collection[2] == 20);
+            Assert.That("[10, 30, 20, 40]", Is.EqualTo(collection.ToString()));
+        }
 
     }
 
