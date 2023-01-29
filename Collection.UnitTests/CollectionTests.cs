@@ -29,6 +29,7 @@ namespace Collection.UnitTests
         [Test]
         public void Test_Collection_ConstructorMultipleItems()
         {
+            //iskren: This is a valid test, but adding 2, 2 does not give a validation of the Order the items are inserted into the Collection.
             var coll = new Collection<int>(2, 2);
             //Assert
             Assert.AreEqual(coll.ToString(), "[2, 2]");
@@ -47,6 +48,8 @@ namespace Collection.UnitTests
         [Test]
         public void Test_Collection_AddRangeWithGrow()
         {
+            //iskren: this Unite test should Grow the capacity as well, the Unit test is not validating this.
+            // -> The Capacity should grow when you try to add a Range
             //Arrange
             var coll = new Collection<int>();
             //Act
@@ -99,6 +102,8 @@ namespace Collection.UnitTests
         [Test]
         public void Test_Collection_SetByInvalidIndex()
         {
+            // iskren: this should be simmilar to the GetByInvalidIndex and throw an Exception.
+            // If the Index is Invalida whatever we try to do (insert, update, etc) should all throw an exception
             var names = new Collection<string>("Peter", "Maria");
 
             Assert.That(names.ToString(), Is.EqualTo("[Peter, Maria]"));
